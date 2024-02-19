@@ -1,38 +1,65 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Image } from 'react-native';
-import styles from './app.module.css';
+import { Text, View, Image, StyleSheet, ScrollView } from 'react-native';
+import Skills from './components/skills';
+import AboutMe from './components/aboutMe';
+import Projects from './components/projects';
 export default function App() {
   return (
-    <View className={styles.container}>
-      <View className={styles.header}>
-        <View className={styles.imageAndName}>
-          <Image source={require('./assets/fotointro.jpg')}
-            style={{ width: 100, height: 100 }}
-            className={styles.logo} />
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <View style={styles.imageAndName}>
+          <Image source={require('./assets/a.jpg')}
+            style={{ width: 100, height: 100 }} />
           <View>
-            <Text className={styles.color}>Guilherme Godoy</Text>
-            <Text className={styles.subtittle}>Desenvolvedor Full Stack</Text>
+            <Text style={styles.color}>Guilherme Godoy</Text>
+            <Text style={styles.subtittle}>Desenvolvedor Full Stack</Text>
           </View>
         </View>
       </View>
-      <View className={styles.aboutme}>
-        <Text className={styles.title}>Sobre mim</Text>
-        <Text className={styles.text}>Desenvolvendo interfaces e APIs com Javascript</Text>
-        <Text className={styles.text}>🎓Cursando Analise e Desenvolvimento de sistemas no SENAI</Text>
-        <Text className={styles.text}>🚀Aprofundando no React Native</Text>
-      </View>
-      <View className={styles.skills}>
-          <Text className={styles.skill}>Skills</Text>
-          <Text className={styles.text}>🚀HTML , CSS JS</Text>
-          <Image source={require('./assets/fullstack.8e2f8efc.svg')} style={{ width: 300, height: 100 }} />
-          <Text className={styles.text}>🚀React</Text>
-          <Image source={require('./assets/react.cf087536.svg')} />
-          <Text className={styles.text}>🚀React Native</Text>
-          <Image source={require('./assets/native.226908f0.svg')} />
-          <Text className={styles.text}>🚀Node.js</Text>
-          <Image source={require('./assets/node.d4c95362.svg')} />
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <AboutMe />
+        <Skills />
+        <Projects />
+      </ScrollView>
       <StatusBar style="auto" />
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 0,
+    margin: 0,
+    boxSizing: 'border-box',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    height: '100vh',
+    width: '100vw',
+    backgroundColor: '#09090A'
+  },
+  header: {
+    backgroundColor: '#121214',
+    padding: 50,
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#fb75fb',
+  },
+  imageAndName: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  color: {
+    color: '#f5f5f5',
+    padding: 10,
+    fontSize: 30,
+  },
+  subtittle: {
+    color: '#f5f5f5',
+    fontSize: 15,
+    padding: 12,
+    marginTop: -20
+  },
+});
